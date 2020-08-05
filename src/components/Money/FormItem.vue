@@ -33,15 +33,20 @@
     padding-left: 16px;
     display: flex;
     align-items: center;
+    border-radius: 8px;
+    border: 1px;
     .name {
       padding-right: 16px;
     }
     input {
-      height: 40px;
+      border: 1px solid #cbc7c7;
+      height: 35px;
       flex-grow: 1;
-      background: transparent;
-      border: none;
-      padding-right: 16px;
+      background: #eae9e9;
+      /*border: none;*/
+      margin-right: 10px;
+      padding-left: 5px;
+      border-radius: 4px;
     }
   }
 </style>

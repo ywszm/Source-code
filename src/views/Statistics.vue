@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
-    <ol>
+    <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
         <ol>
@@ -15,6 +15,9 @@
         </ol>
       </li>
     </ol>
+    <div v-else class="noResult">
+      目前没有相关记录
+    </div>
   </Layout>
 </template>
 <script lang="ts">
@@ -30,7 +33,7 @@
   })
   export default class Statistics extends Vue {
     tagString(tags: Tag[]) {
-      return tags.length === 0 ? '无' : tags.join(',');
+      return tags.length === 0 ? '无' : tags.map(t=>t.name).join('，');
     }
 
     beautify(string: string) {
@@ -56,11 +59,11 @@
 
     get groupedList() {
       const {recordList} = this;
-      if (recordList.length === 0) {return [];}
 
       const newList = clone(recordList)
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+      if (newList.length === 0) {return [];}
       type Result = { title: string, total?: number, items: RecordItem[] }[]
       const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
       for (let i = 1; i < newList.length; i++) {
@@ -92,20 +95,29 @@
 </script>
 
 <style scoped lang="scss">
+  .noResult{
+    padding: 16px;
+    text-align: center;
+  }
   ::v-deep {
     .type-tabs-item {
-      background: #C4C4C4;
+      border: 1px solid #dedede;
+      background: white;
+
       &.selected {
-        background: white;
+        background: #ffe384;
+
         &::after {
           display: none;
         }
       }
     }
+
     .interval-tabs-item {
       height: 48px;
     }
   }
+
   %item {
     padding: 8px 16px;
     line-height: 24px;
@@ -113,14 +125,18 @@
     justify-content: space-between;
     align-content: center;
   }
+
   .title {
     @extend %item;
   }
+
   .record {
     background: white;
     @extend %item;
   }
+
   .notes {
+
     margin-right: auto;
     margin-left: 16px;
     color: #999;

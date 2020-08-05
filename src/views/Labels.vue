@@ -42,6 +42,7 @@
 
 <style lang="scss" scoped>
   .tags {
+    border-radius: 5px;
     background: white;
     font-size: 16px;
     padding-left: 16px;
@@ -60,13 +61,14 @@
     }
   }
   .createTag {
-    background: #767676;
-    color: white;
+    background: #ffe384;
+    color: black;
     border-radius: 4px;
     border: none;
     height: 40px;
     padding: 0 16px;
     &-wrapper {
+
       text-align: center;
       padding: 16px;
       margin-top: 44-16px;

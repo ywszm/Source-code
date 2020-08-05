@@ -38,13 +38,16 @@
 
 <style lang="scss" scoped>
   .tabs {
-    background: #C4C4C4;
+    /*border: 1px solid red;*/
+    background: white;
     display: flex;
     text-align: center;
     font-size: 24px;
+    /*border-radius: 8px;*/
     &-item {
       width: 50%;
       height: 64px;
+      border-radius: 3px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -56,7 +59,8 @@
         left: 0;
         width: 100%;
         height: 4px;
-        background: #333;
+        background: #ffe384;
+
       }
     }
   }

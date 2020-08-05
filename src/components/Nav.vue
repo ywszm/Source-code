@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: row;
     font-size: 12px;
+    background: whitesmoke;
     > .item {
       padding: 2px 0;
       width: 33.33333%;
@@ -42,7 +43,8 @@
       }
     }
     > .item.selected{
-      color: $color-highlight;
+      background: #ffe384;
+      border-radius: 8px;
     }
   }
 </style>

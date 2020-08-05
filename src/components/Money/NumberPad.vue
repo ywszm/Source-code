@@ -77,6 +77,7 @@
       padding: 9px 16px;
       text-align: right;
       height: 72px;
+      border-radius: 8px;
     }
     .buttons {
       @extend %clearFix;
@@ -86,6 +87,7 @@
         float: left;
         background: transparent;
         border: none;
+        border-radius: 8px;
         &.ok {
           height: 64*2px;
           float: right;
@@ -93,7 +95,7 @@
         &.zero {
           width: 25*2%;
         }
-        $bg: #F2F2F2;
+        $bg: #fcf1cd;
         &:nth-child(1) {
           background: $bg;
         }

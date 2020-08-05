@@ -64,7 +64,7 @@
     text-align: center;
     font-size: 16px;
     padding: 12px 16px;
-    background: white;
+    background: #ffe384;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,7 +80,7 @@
     }
   }
   .form-wrapper {
-    background: white;
+    background: #eeeded;
     margin-top: 8px;
   }
   .button-wrapper {
